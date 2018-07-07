@@ -5,8 +5,8 @@ const House = (props) => {
     return (
         <div>
             {props.houseList.map( (house) => (
-                <div className="house-container">
-                    <img key={ house.id } src={ house.image_url } alt=' ' />
+                <div className="house-container"  key={ house.id }>
+                    <img src={ house.image_url } alt=' ' />
                     <h3>Address: {house.address}</h3>
                     <h3>Property Name: {house.property_name}</h3>
                     <h3>City: {house.city}</h3>

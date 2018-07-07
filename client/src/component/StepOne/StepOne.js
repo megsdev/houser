@@ -1,45 +1,17 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+
+import { updatePropertyName, updateAddress, updateCity, updateState, updateZipcode, } from '../../ducks/reducer'
 
 import '../../App.css'
 
 
 
-export default class Wizard extends Component {
-    constructor() {
-        super()
-    
-        this.state = {
-            property_name: '',
-            address: '',
-            city: '',
-            state: '',
-            zipcode: 0
-        }
-
-    }
-
-    updatePropertyName = ( text ) => {
-        this.setState({ property_name: text })
-    }
-
-    updateAddress = ( text ) => {
-        this.setState({ address: text })
-    }
-
-    updateCity = ( text ) => {
-        this.setState({ city: text })
-    }
-
-    updateState = ( text ) => {
-        this.setState({ state: text })
-    }
-
-    updateZip = ( text ) => {
-        this.setState({ zipcode: text })
-    }
+class StepOne extends Component {
 
     render(){
+        console.log('props', this.props)
         return(
             <div className="column-container">
                 <div className="row-container">
@@ -47,18 +19,32 @@ export default class Wizard extends Component {
                     <Link to='/'><button className="cancel-button" >Cancel</button></Link>
                 </div>
                 <h2>Property Name</h2>
-                <input className="input-box"  onChange={ e => this.updatePropertyName(e.target.value)} />
+                <input onChange={ e => this.props.updatePropertyName(e.target.value)} />
                 <h2>Address</h2>
-                <input className="input-box"  onChange={ e => this.updateAddress(e.target.value)} />
+                <input onChange={ e => this.props.updateAddress(e.target.value)} />
                 <h2>City</h2>
-                <input className="input-box"  onChange={ e => this.updateCity(e.target.value)} />
+                <input onChange={ e => this.props.updateCity(e.target.value)} />
                 <h2>State</h2>
-                <input className="input-box"  onChange={ e => this.updateState(e.target.value)} />
+                <input onChange={ e => this.props.updateState(e.target.value)} />
                 <h2>Zip</h2>
-                <input className="input-box"  placeholder="0" onChange={ e => this.updateZip(e.target.value)} />
+                <input placeholder="0" onChange={ e => this.props.updateZipcode(e.target.value)} />
 
                 <Link to='/wizard/step2'><button className="navigation-button">Next Step</button></Link>
             </div>
         )
     }
 }
+
+function mapStateToProps(state) {
+    const { property_name, address, city, state: st, zipcode } = state
+
+    return {
+        property_name,
+        address,
+        city,
+        st,
+        zipcode
+    }
+}
+
+export default connect(mapStateToProps, {updatePropertyName, updateAddress, updateCity, updateState, updateZipcode})(StepOne)
