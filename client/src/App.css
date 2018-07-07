@@ -1,0 +1,63 @@
+.App {
+  text-align: center;
+  background-color: #B7D3C2;
+  height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  background-color: #649675;
+  color: white;
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E8F4ED;
+  width: 75vw;
+  height: 100vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+button {
+  height: 45px;
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.navigation-button {
+  background-color: #405149;
+  color: white;
+}
+
+.cancel-button {
+  background-color: #F4C4C3;
+}
+
+.green-button {
+  background-color: #A3E69B;
+}
+
+input {
+  height: 25px;
+  width: 290px;
+  border-color: #649675;
+  margin: 10px;
+}
+
+.house-container {
+  background-color: #DEDEDE;
+  padding: 20px;
+}
